@@ -7,9 +7,10 @@ class Movie
     public $duration; // Mins
     public $genre;
     public $director;
-    public $ageRange; // (-18 or +18)
+    public $ageRange;
+    private $shortLong;
 
-    function __construct($title, $year, $duration, $genre, $director, $ageRange)
+    function __construct($title, $year, $duration, $genre, $director, $ageRange, $shortLong)
     {
         $this->title = $title;
         $this->year = $year;
@@ -17,5 +18,21 @@ class Movie
         $this->genre = $genre;
         $this->director = $director;
         $this->ageRange = $ageRange;
+        $this->shortLong = $shortLong;
+    }
+
+
+    public function setDurata($duration)
+    {
+        if ($duration > 120) {
+            return $this->shortLong = "Lunga durata " . "(" . $duration . " mins)";
+        } else {
+            return $this->shortLong = "Breve durata " . "(" . $duration . " mins)";
+        }
+    }
+
+    public function print()
+    {
+        return " Title: $this->title <br> Year: $this->year <br> Duration: $this->duration <br> Genre: $this->genre <br> Director $this->director <br> Age: $this->ageRange <br> $this->shortLong ";
     }
 }
